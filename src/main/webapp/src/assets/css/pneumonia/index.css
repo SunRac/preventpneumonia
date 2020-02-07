@@ -1,0 +1,37 @@
+/*导航栏图标*/
+.home-outline:before {
+    content: url(../../icon/house.svg);
+}
+.home-category:before {
+    content: url(../../icon/flag.svg);
+}
+.home-contact:before {
+    content: url(../../icon/heart.svg);
+}
+.home-about:before {
+    content: url(../../icon/tag-fill.svg);
+}
+.home-login:before {
+    content: url(../../icon/person.svg);
+}
+/*.home-foot2head:before {
+    content: url(../../icon/cursor.svg);
+}*/
+/*设置图标大小*/
+.footer {
+    background-color: #9C27B0;
+    padding-top: 1rem;
+}
+
+.mdi-menu:before {
+    content: url(../../icon/list.svg);
+}
+
+/*#carouselHome .carousel-inner img {
+    !*height: 70vh;*!
+    height: 100%;
+    width: 100%;
+}*/
+.bg-overlay-home {
+    background-image: url(../../img/animation.png);
+}

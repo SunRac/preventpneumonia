@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="新型肺炎确诊患者小区查询">
+    <title>新型肺炎确诊患者小区查询</title>
+    <link href="src/assets/css/common/bootstrap.min.css" rel="stylesheet">
+    <link href="src/assets/css/common/bootstrap-grid.min.css" rel="stylesheet">
+    <link href="src/assets/css/common/bootstrap-reboot.min.css" rel="stylesheet">
+    <link href="src/assets/css/pneumonia/preventPneumonia.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="bodyBg"></div>
+<div class="container ">
+    <h3>新型肺炎确诊患者小区查询</h3>
+    <br/>
+    <iframe width='560px' height='440px' frameborder='0' scrolling='no' marginheight='0' marginwidth='0' src='https://yuntu.amap.com/share/niUZNj'></iframe>
+    <br/>
+    <form>
+        <div class="form-group">
+            <label>地区:</label>
+            <div class="row">
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="cityName" placeholder="请输入城市名称，例如：郑州 或 郑州市"/>
+                </div>
+            </div>
+            <!--<a id="testDao" href="/preventpneumonia/district/123">整合spring-mybatis</a>-->
+        </div>
+        <div class="form-group">
+            <label class="b_label">验证码:</label>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="row">
+                        <div class="col-8 col-sm-8">
+                            <input type="input" class="form-control" id="yzm" placeholder="请输入验证码">
+                        </div>
+                        <div class="col-4 col-sm-4">
+                            <img id="yzmImg" title="看不清楚，点击刷新" width="109" height="35"
+                                 onclick="src='/preventpneumonia/validateCodeServlet?'+ new Date().getTime()">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+    <div>
+    <button id="submit" type="button" class="btn btn-primary btn-lg">提交</button>
+    </div>
+    <!--查询结果区域-->
+    <br/>
+    <br/>
+    <div id="resultPool"></div>
+</div>
+
+
+<script src="src/js/common/jquery-3.4.1.min.js"></script>
+<script src="src/js/common/jquery-easing.min.js"></script>
+<script src="src/js/common/bootstrap.min.js"></script>
+<script src="src/js/common/bootstrap.bundle.min.js"></script>
+<script src="src/js/pneumonia/preventPneumonia.js"></script>
+</body>
+</html>
