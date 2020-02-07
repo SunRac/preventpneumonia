@@ -18,35 +18,42 @@ $("#submit").on("click", function () {
         cache: false,
         success: function(result) {
             debugger;
-            //TODO 增加一个标准返回结果，先判断rtnCode是否是success，再进行处理逻辑
+            // 增加一个标准返回结果，先判断returnCode是否是1，再进行处理逻辑
             $("#resultPool").empty();
             var tableHtml = "<h><mark>"+ cityName +"</mark> 新型肺炎确诊患者小区查询结果：</h><br/><br/>";
-            if(result.length == 0){
-                tableHtml += '<p>恭喜你，当前地区没有确诊病例</p>';
-            } else {
-                tableHtml += '<table class="table table-hover table-striped">\n' +
-                    '    <thead>\n' +
-                    '      <tr>\n' +
-                    '        <th >小区名</th>\n' +
-                    // '        <th >确诊情况</th>\n' +
-                    '        <th class="text-nowrap">地区</th>\n' +
-                    '        <th class="text-nowrap">更新时间</th>\n' +
-                    '      </tr>\n' +
-                    '    </thead>\n' +
-                    '    <tbody>';
+            if(result.returnCode == "1"){
+                var data = result.beans;
+                if(data.length == 0){
+                    tableHtml += '<p>恭喜你，当前地区没有确诊病例</p>';
+                } else {
+                    tableHtml += '<table class="table table-hover table-striped">\n' +
+                        '    <thead>\n' +
+                        '      <tr>\n' +
+                        '        <th >小区名</th>\n' +
+                        // '        <th >确诊情况</th>\n' +
+                        '        <th class="text-nowrap">地区</th>\n' +
+                        '        <th class="text-nowrap">更新时间</th>\n' +
+                        '      </tr>\n' +
+                        '    </thead>\n' +
+                        '    <tbody>';
 
-                result.forEach(function (item, index, array) {
-                    tableHtml += '<div class="row">\n' +
-                        '<tr>\n' +
-                        '        <td class="">'+ item.patient_district_name +'</td>\n' +
-                        // '        <td>'+ item.patient_desc +'</td>\n' +
-                        '        <td class="text-nowrap">'+ item.city_name +'</td>\n' +
-                        '        <td class="text-nowrap">'+ item.EV_MODIFY_TIME.split(" ")[0] +'</td>\n' +
-                        '</tr>';
-                })
-                tableHtml += '</tbody>\n' +
-                    '</table>';
+                    data.forEach(function (item, index, array) {
+                        tableHtml += '<div class="row">\n' +
+                            '<tr>\n' +
+                            '        <td class="">'+ item.patient_district_name +'</td>\n' +
+                            // '        <td>'+ item.patient_desc +'</td>\n' +
+                            '        <td class="text-nowrap">'+ item.city_name +'</td>\n' +
+                            '        <td class="text-nowrap">'+ item.EV_MODIFY_TIME.split(" ")[0] +'</td>\n' +
+                            '</tr>';
+                    })
+                    tableHtml += '</tbody>\n' +
+                        '</table>';
+                }
+                $("#resultPool").append(tableHtml);
+            }else {
+                console.log("district查询异常");
             }
+
             // 使用div流式布局分界效果不好
            /* var tableHtml = "<p>"+ cityName +"新型肺炎确诊患者小区查询结果：</p>"+
                 '<div class="row">\n' +
@@ -64,7 +71,6 @@ $("#submit").on("click", function () {
                     '  <div class="col text-info">'+ item.EV_MODIFY_TIME +'</div>\n' +
                     '</div>';
             })*/
-            $("#resultPool").append(tableHtml);
 
 
         },

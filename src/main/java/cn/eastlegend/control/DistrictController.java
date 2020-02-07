@@ -1,5 +1,6 @@
 package cn.eastlegend.control;
 
+import cn.eastlegend.bean.OutputObject;
 import cn.eastlegend.service.district.DistrictService;
 import cn.eastlegend.util.JacksonUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -52,7 +53,8 @@ public class DistrictController {
         }
         params.put("cityName", cityName);
         List<Map<String, Object>> districts = districtService.getAllDistrict(params);
-        //TODO 定义一个返回值模板
-        return districts;
+        OutputObject outputObject = new OutputObject("1");
+        outputObject.setBeans(districts);
+        return outputObject;
     }
 }
