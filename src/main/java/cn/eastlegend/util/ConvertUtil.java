@@ -117,7 +117,7 @@ public class ConvertUtil {
         }
     }
 
-    private static String bytes2String(byte[] bytes) {
+    public static String bytes2String(byte[] bytes) {
         StringBuilder builder = new StringBuilder(bytes.length * 2);
         for (int i = 0; i < bytes.length; i++) {
             builder.append(HEXCHAR[(bytes[i] & 240) >>> 4]);
@@ -126,7 +126,7 @@ public class ConvertUtil {
         return builder.toString();
     }
 
-    private static byte[] string2Bytes(String str) {
+    public static byte[] string2Bytes(String str) {
         byte[] bytes = new byte[str.length() / 2];
         for (int i = 0; i < bytes.length; i++) {
             bytes[i] = (byte) Integer.parseInt(str.substring(2 * i, 2 * i +2), 16);
@@ -218,6 +218,16 @@ public class ConvertUtil {
             LOGGER.error("convertJson2Object异常", e);
             return null;
         }
+    }
+
+    /**
+     * 把日期类型转换成字符串
+     * @param date
+     * @return
+     */
+    public static String format(java.util.Date date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return date == null ? "" : sdf.format(date);
     }
 
 }
